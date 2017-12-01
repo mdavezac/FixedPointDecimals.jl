@@ -160,6 +160,10 @@ end
         fd = reinterpret(FD2, 25)
         @test convert(Rational, fd) == 1//4
     end
+    @testset "from rational and float" begin
+        @test convert(FD2, 0.333) == FD2(0.33)
+        @test convert(FD2, 1//3) == FD2(0.33)
+    end
 
     @testset "invalid" begin
         @test_throws InexactError convert(FD2, FD4(0.0001))

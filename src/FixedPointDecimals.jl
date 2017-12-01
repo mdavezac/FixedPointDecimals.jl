@@ -262,7 +262,7 @@ convert{T <: FD}(::Type{T}, x::AbstractFloat) = round(T, x)
 
 function convert{T, f}(::Type{FD{T, f}}, x::Rational)::FD{T, f}
     powt = coefficient(FD{T, f})
-    reinterpret(FD{T, f}, T(x * powt))
+    reinterpret(FD{T, f}, round(T, x * powt))
 end
 
 function convert{T, f, U, g}(::Type{FD{T, f}}, x::FD{U, g})
